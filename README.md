@@ -1,58 +1,42 @@
-# Svelte library
+# gdrivy
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+Web app to download files from Google Drive. React frontend with an Express server that proxies the Google Drive API.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Features
 
-## Creating a project
+- Download Google Drive files through a Drive API proxy
+- Download progress via the X-Download-Progress header
+- Works with Google OAuth credentials or an API key
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tech Stack
 
-```sh
-# create a new project in the current directory
-npx sv create
+- Frontend: React 18, Vite, Zustand, Axios
+- Server: Express, googleapis, express-session
+- Tests: Vitest on both frontend and server
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Getting Started
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+The server reads Google credentials from environment variables: `GOOGLE_API_KEY`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI`, `SESSION_SECRET`.
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm install
+npm run dev:all
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+`dev:all` starts the Vite dev server and the API server together.
 
-## Building
-
-To build your library:
+Build:
 
 ```sh
-npm pack
+npm run build:all
 ```
 
-To create a production version of your showcase app:
+Run tests:
 
 ```sh
-npm run build
+npm run test:all
 ```
 
-You can preview the production build with `npm run preview`.
+## License
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+MIT. See [LICENSE](LICENSE).
